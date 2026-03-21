@@ -3,59 +3,38 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.FrameLayout
+import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.util.function.ToDoubleFunction
 
-class Home : AppCompatActivity() {
+class AgregarTarjeta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_agregar_tarjeta)
 
         //BOTONES MENU
         botonesMenu()
 
         //VARIABLES
-        val nombre = findViewById<TextView>(R.id.txtNombre)
-        val id = findViewById<TextView>(R.id.txtID)
-        val totalPedidos = findViewById<TextView>(R.id.TotalPedidos)
-        val tiempoEspera = findViewById<TextView>(R.id.TiempoEspera)
-        val numPedido = findViewById<TextView>(R.id.NumPedido)
+        val apodo = findViewById<EditText>(R.id.txtApodo)
+        val nombre = findViewById<EditText>(R.id.txtNombre)
+        val digitos = findViewById<EditText>(R.id.txtDigitos)
+        val fecha = findViewById<EditText>(R.id.txtFecha)
+        val cvv = findViewById<EditText>(R.id.txtCVV)
+
+        //BOTONES
+        val btnGuardar = findViewById<Button>(R.id.btnGuardar)
 
 
-        //BOTONES DE LA PANTALLA
-        val btnDesayunos = findViewById<Button>(R.id.btnDesayunos)
-        val btnComidas = findViewById<Button>(R.id.btnComidas)
-
-        //RECYCLE VIEW
-        val rvDesayunos = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvDesayunos)
-        val rvComidas = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvComidas)
-
-
-        // FRAMES LAYOUT
-        val framePedido = findViewById<FrameLayout>(R.id.framePedido) //este frame muestra la parte donde dice el número de pedido, se puede hacer invisible si no hay pedido realizado
-        //framePedido.visibility = FrameLayout.VISIBLE
-
-
-        //FUNCIONES BOTONES
-        btnDesayunos.setOnClickListener {
-            intent = Intent(this, TodoComida::class.java)
-            intent.putExtra("tipo", "Desayunos")
+        // FUNCION BOTON GUARDAR
+        btnGuardar.setOnClickListener {
+            intent = Intent(this, MetodosDePago::class.java)
             startActivity(intent)
         }
-
-        btnComidas.setOnClickListener {
-            intent = Intent(this, TodoComida::class.java)
-            intent.putExtra("tipo", "Comidas")
-            startActivity(intent)
-        }
-
 
     }
 
@@ -90,9 +69,6 @@ class Home : AppCompatActivity() {
             intent = Intent(this, Notificaciones::class.java)
             startActivity(intent)
         }
-
     }
-
-
 
 }

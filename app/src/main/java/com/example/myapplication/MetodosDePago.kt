@@ -10,50 +10,48 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.util.function.ToDoubleFunction
+import androidx.recyclerview.widget.RecyclerView
 
-class Home : AppCompatActivity() {
+class MetodosDePago : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_metodos_de_pago)
 
         //BOTONES MENU
         botonesMenu()
 
         //VARIABLES
-        val nombre = findViewById<TextView>(R.id.txtNombre)
-        val id = findViewById<TextView>(R.id.txtID)
-        val totalPedidos = findViewById<TextView>(R.id.TotalPedidos)
-        val tiempoEspera = findViewById<TextView>(R.id.TiempoEspera)
-        val numPedido = findViewById<TextView>(R.id.NumPedido)
+        val tarjetaPred = findViewById<TextView>(R.id.textNumTarjeta)
 
-
-        //BOTONES DE LA PANTALLA
-        val btnDesayunos = findViewById<Button>(R.id.btnDesayunos)
-        val btnComidas = findViewById<Button>(R.id.btnComidas)
+        //BOTONES
+        val btnBorrar = findViewById<ImageButton>(R.id.btnBorrar)
+        val btnAgregarTarjetas = findViewById<ImageButton>(R.id.btnMasTarjetas)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+        val btnBorrarTarjeta = findViewById<Button>(R.id.btnBorrarTarjeta)
 
         //RECYCLE VIEW
-        val rvDesayunos = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvDesayunos)
-        val rvComidas = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvComidas)
+        val rvTarjetas = findViewById<RecyclerView>(R.id.rvProductos)
 
-
-        // FRAMES LAYOUT
-        val framePedido = findViewById<FrameLayout>(R.id.framePedido) //este frame muestra la parte donde dice el número de pedido, se puede hacer invisible si no hay pedido realizado
-        //framePedido.visibility = FrameLayout.VISIBLE
-
+        //FRAMES LAYOUT
+        val frameBorrar = findViewById<FrameLayout>(R.id.borrarNotif)
 
         //FUNCIONES BOTONES
-        btnDesayunos.setOnClickListener {
-            intent = Intent(this, TodoComida::class.java)
-            intent.putExtra("tipo", "Desayunos")
+        btnAgregarTarjetas.setOnClickListener {
+            intent = Intent(this, AgregarTarjeta::class.java)
             startActivity(intent)
         }
 
-        btnComidas.setOnClickListener {
-            intent = Intent(this, TodoComida::class.java)
-            intent.putExtra("tipo", "Comidas")
-            startActivity(intent)
+        btnBorrar.setOnClickListener {
+            frameBorrar.visibility = FrameLayout.VISIBLE
+        }
+
+        btnCancelar.setOnClickListener {
+            frameBorrar.visibility = FrameLayout.INVISIBLE
+        }
+
+        btnBorrarTarjeta.setOnClickListener {
+            frameBorrar.visibility = FrameLayout.INVISIBLE
         }
 
 
@@ -90,9 +88,6 @@ class Home : AppCompatActivity() {
             intent = Intent(this, Notificaciones::class.java)
             startActivity(intent)
         }
-
     }
-
-
 
 }

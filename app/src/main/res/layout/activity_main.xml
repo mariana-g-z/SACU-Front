@@ -109,11 +109,13 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginBottom="4dp"
-            android:layout_marginLeft="32dp"
-            android:textStyle="bold"/>
+            android:layout_marginRight="100dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
 
         <!-- Campo ID con fondo gris claro y texto tipo placeholder -->
         <EditText
+            android:id="@+id/txtCorreo"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginBottom="16dp"
@@ -136,11 +138,13 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginBottom="4dp"
-            android:layout_marginLeft="32dp"
-            android:textStyle="bold"/>
+            android:layout_marginRight="100dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
 
         <!-- Campo Contraseña con fondo gris claro y texto oculto -->
         <EditText
+            android:id="@+id/txtContra"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginBottom="32dp"
@@ -157,6 +161,7 @@
 
         <!-- Botón Ingresar -->
         <Button
+            android:id="@+id/btnIngresar"
             android:layout_width="199dp"
             android:layout_height="56dp"
             android:layout_gravity="center"
